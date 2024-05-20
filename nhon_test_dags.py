@@ -19,7 +19,7 @@ def list_args(kwargs):
 # Define the function to print "Hello, World!"
 def print_hello(**kwargs):
     print("start here", datetime.now())
-    for i in range(120):
+    for i in range(5):
         print("Hello, World!")
         print("abc")
         time.sleep(1)
