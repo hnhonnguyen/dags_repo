@@ -17,7 +17,7 @@ def print_nested_kwargs(kwargs, indent=""):
             print_nested_kwargs(value, indent + "  ")
         else:
             print(f"{indent}{key}: {value}")
-            print(type(value))
+            print(vars(value))
             
 # Define the function to print "Hello, World!"
 def print_hello(**kwargs):
