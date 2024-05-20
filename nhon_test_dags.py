@@ -21,9 +21,8 @@ def print_hello(**kwargs):
     print("start here", datetime.now())
     for i in range(5):
         print("Hello, World!")
-        print("abc")
         time.sleep(1)
-    
+    list_args(kwargs)
     print("end here", datetime.now())
 
 # Instantiate the DAG
