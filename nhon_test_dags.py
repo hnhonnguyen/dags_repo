@@ -15,16 +15,15 @@ def print_nested_kwargs(kwargs, indent=""):
         if isinstance(value, dict):
             print(f"{indent}Nested kwargs for {key}:")
             print_nested_kwargs(value, indent + "  ")
-        else:
+        elif isinstance(value, str):
             print(f"{indent}{key}: {value}")
+        else:
+            for item in value:
+                print_nested_kwargs(item, indent + " ")
             
 # Define the function to print "Hello, World!"
 def print_hello(**kwargs):
     print_nested_kwargs(kwargs)
-    print("start here", datetime.now())
-    for i in range(5):
-        print("Hello, World!")
-        time.sleep(1)
     print("end here", datetime.now())
 
 # Instantiate the DAG
