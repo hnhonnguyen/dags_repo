@@ -10,16 +10,20 @@ default_args = {
     'retries': 1
 }
 
+def list_args(kwargs):
+    for i in kwargs:
+        if not isinstance(i, str):
+            print(i)
+            list_args(kwargs[i])
+
 # Define the function to print "Hello, World!"
 def print_hello(**kwargs):
     print("start here", datetime.now())
     for i in range(120):
         print("Hello, World!")
         print("abc")
-        for element in kwargs:
-            print(element)
-        print(kwargs)
         time.sleep(1)
+    
     print("end here", datetime.now())
 
 # Instantiate the DAG
