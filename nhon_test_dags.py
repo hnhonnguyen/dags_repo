@@ -10,19 +10,21 @@ default_args = {
     'retries': 1
 }
 
-def list_args(kwargs):
-    for i in kwargs:
-        if not isinstance(i, str):
-            print(i)
-            list_args(kwargs[i])
-
+def print_nested_kwargs(kwargs, indent=""):
+    for key, value in kwargs.items():
+        if isinstance(value, dict):
+            print(f"{indent}Nested kwargs for {key}:")
+            print_nested_kwargs(value, indent + "  ")
+        else:
+            print(f"{indent}{key}: {value}")
+            
 # Define the function to print "Hello, World!"
 def print_hello(**kwargs):
+    print_nested_kwargs(kwargs)
     print("start here", datetime.now())
     for i in range(5):
         print("Hello, World!")
         time.sleep(1)
-    list_args(kwargs)
     print("end here", datetime.now())
 
 # Instantiate the DAG
