@@ -1,6 +1,7 @@
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from datetime import datetime
+import time
 
 # Define the default arguments for the DAG
 default_args = {
@@ -11,7 +12,14 @@ default_args = {
 
 # Define the function to print "Hello, World!"
 def print_hello():
+    print("start here", time.time())
+    time.sleep(30)
     print("Hello, World!")
+    print("Hello, World!")
+    print("Hello, World!")
+    print("Hello, World!")
+    print("Hello, World!")
+    print("end here", time.time())
 
 # Instantiate the DAG
 dag = DAG(
