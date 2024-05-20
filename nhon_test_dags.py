@@ -16,6 +16,8 @@ def print_hello(**kwargs):
     for i in range(120):
         print("Hello, World!")
         print("abc")
+        for element in kwargs:
+            print(element)
         print(kwargs)
         time.sleep(1)
     print("end here", datetime.now())
