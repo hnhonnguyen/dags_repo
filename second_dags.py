@@ -1,6 +1,6 @@
 from airflow.decorators import dag, task
 import time
-from datetime import datetime
+import datetime
 import pendulum
 
 def sla_callback(dag, task_list, blocking_task_list, slas, blocking_tis):
