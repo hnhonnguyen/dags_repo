@@ -12,14 +12,11 @@ default_args = {
 
 # Define the function to print "Hello, World!"
 def print_hello():
-    print("start here", time.time())
-    time.sleep(30)
-    print("Hello, World!")
-    print("Hello, World!")
-    print("Hello, World!")
-    print("Hello, World!")
-    print("Hello, World!")
-    print("end here", time.time())
+    print("start here", datetime.now())
+    for i in range(30):
+        print("Hello, World!")
+        time.sleep(1)
+    print("end here", datetime.now())
 
 # Instantiate the DAG
 dag = DAG(
