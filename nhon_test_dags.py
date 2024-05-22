@@ -7,7 +7,9 @@ import time
 default_args = {
     'owner': 'airflow',
     'start_date': datetime(2024, 5, 16),
-    'retries': 1
+    'retries': 1,
+    'email': 'vn3848587@gmail.com',
+    
 }
 
 def print_nested_kwargs(kwargs, indent=""):
