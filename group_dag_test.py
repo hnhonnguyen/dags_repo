@@ -1,7 +1,9 @@
-from airflow import DAG
+from airflow import DAG, Dataset
 from airflow.operators.bash import BashOperator
  
 from datetime import datetime
+
+my_file = Dataset('/tmp/my_file.txt')
  
 with DAG('group_dag', start_date=datetime(2022, 1, 1), 
     schedule_interval='@daily', catchup=False) as dag:
@@ -38,7 +40,8 @@ with DAG('group_dag', start_date=datetime(2022, 1, 1),
  
     transform_c = BashOperator(
         task_id='transform_c',
-        bash_command='sleep 10'
+        bash_command='sleep 10',
+        outlets=[my_file]
     )
  
     [download_a, download_b, download_c] >> check_files >> [transform_a, transform_b, transform_c]

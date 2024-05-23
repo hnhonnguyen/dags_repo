@@ -2,6 +2,7 @@ from airflow.decorators import dag, task
 import time
 import datetime
 import pendulum
+from airflow import Dataset
 
 def sla_callback(dag, task_list, blocking_task_list, slas, blocking_tis):
     print(
@@ -15,9 +16,10 @@ def sla_callback(dag, task_list, blocking_task_list, slas, blocking_tis):
         },
     )
 
+my_file = Dataset("/tmp/my_fule.txt")
 
 @dag(
-    schedule="*/2 * * * *",
+    schedule=[my_file],
     start_date=pendulum.datetime(2021, 1, 1, tz="UTC"),
     catchup=False,
     sla_miss_callback=sla_callback,
