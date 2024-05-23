@@ -15,7 +15,7 @@ def print_dataset_uri():
 local_tz = pendulum.timezone('Asia/Ho_Chi_Minh')
  
 with DAG('group_dag', start_date=pendulum.datetime(2022, 1, 1, tz=local_tz), 
-    schedule_interval='58 15 * * *', catchup=False) as dag:
+    schedule_interval='1 16 * * *', catchup=False) as dag:
  
     download_a = PythonOperator(
         task_id = 'print_dataset_uri',
