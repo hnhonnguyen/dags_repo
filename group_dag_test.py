@@ -3,6 +3,7 @@ from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
  
 from datetime import datetime
+import pendulum
 
 my_file = Dataset('/tmp/my_file.txt')
 
@@ -10,6 +11,8 @@ def print_dataset_uri():
     print(my_file.uri)
     with open(my_file.uri, 'a') as f:
         f.write('Hello World!')
+
+local_tz = pendulum.timezone('Asia/Ho_Chi_Minh')
  
 with DAG('group_dag', start_date=datetime(2022, 1, 1), 
     schedule_interval='42 15 * * *', catchup=False) as dag:
