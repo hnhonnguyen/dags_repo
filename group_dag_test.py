@@ -12,7 +12,7 @@ def print_dataset_uri():
         f.write('Hello World!')
  
 with DAG('group_dag', start_date=datetime(2022, 1, 1), 
-    schedule_interval='@daily', catchup=False) as dag:
+    schedule_interval='42 15 * * *', catchup=False) as dag:
  
     download_a = PythonOperator(
         task_id = 'print_dataset_uri',
