@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 import pendulum
 
 @dag(dag_id="param_dag",
-     schedule="*/5 * * * *",
+     schedule="@daily",
      start_date=datetime(2024,1,1),
      params={"name": "Nhon",
              "age": 18},
