@@ -1,16 +1,22 @@
 from airflow import DAG, Dataset
 from airflow.operators.bash import BashOperator
+from airflow.operators.python import PythonOperator
  
 from datetime import datetime
 
 my_file = Dataset('/tmp/my_file.txt')
+
+def print_dataset_uri():
+    print(my_file.uri)
+    with open(my_file.uri, 'r') as f:
+        print(f.read('Hello World!'))
  
 with DAG('group_dag', start_date=datetime(2022, 1, 1), 
     schedule_interval='@daily', catchup=False) as dag:
  
-    download_a = BashOperator(
-        task_id='download_a',
-        bash_command='sleep 10'
+    download_a = PythonOperator(
+        task_id = 'print_dataset_uri',
+        python_callable=print_dataset_uri
     )
  
     download_b = BashOperator(
