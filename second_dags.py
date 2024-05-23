@@ -16,7 +16,7 @@ def sla_callback(dag, task_list, blocking_task_list, slas, blocking_tis):
         },
     )
 
-my_file = Dataset("/tmp/my_fule.txt")
+my_file = Dataset("/tmp/my_file.txt")
 
 @dag(
     schedule=[my_file],
