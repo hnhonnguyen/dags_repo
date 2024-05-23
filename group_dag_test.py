@@ -8,8 +8,8 @@ my_file = Dataset('/tmp/my_file.txt')
 
 def print_dataset_uri():
     print(my_file.uri)
-    with open(my_file.uri, 'r') as f:
-        print(f.read('Hello World!'))
+    with open(my_file.uri, 'a') as f:
+        f.write('Hello World!')
  
 with DAG('group_dag', start_date=datetime(2022, 1, 1), 
     schedule_interval='@daily', catchup=False) as dag:
