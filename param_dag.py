@@ -20,3 +20,5 @@ def my_dag():
         print(context)
 
     print_custom()
+
+my_dag()
