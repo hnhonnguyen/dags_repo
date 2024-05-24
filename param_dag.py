@@ -17,7 +17,7 @@ def my_dag():
     @task
     def print_custom(**context):
         print("ahihi")
-        print(context)
+        print("thời gian chạy: {{ ds_nodash }}")
 
     print_custom()
 
