@@ -24,6 +24,6 @@ with DAG(
     print_python_task = PythonOperator(task_id="print_hello", python_callable=print_hello)
 
     print_bash_task = BashOperator(
-        task_id="print_bash", bash_command="echo 'Hello world!'"
+        task_id="print_bash", bash_command="echo 'Hello world! at {{ ds }}'"
     )
     print_bash_task >> print_python_task
