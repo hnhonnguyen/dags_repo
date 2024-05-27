@@ -1,5 +1,6 @@
 from airflow import DAG
 from airflow.operators.python import PythonOperator
+from airflow.operators.bash import BashOperator
 from datetime import datetime
 
 
@@ -20,6 +21,9 @@ with DAG(
     def print_hello(ds):
         print(f"Hello world! {ds}")
 
-    task = PythonOperator(task_id="print_hello", python_callable=print_hello)
+    print_python_task = PythonOperator(task_id="print_hello", python_callable=print_hello)
 
-    task
+    print_bash_task = BashOperator(
+        task_id="print_bash", bash_command="echo 'Hello world!'"
+    )
+    print_bash_task >> print_python_task
