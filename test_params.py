@@ -26,6 +26,6 @@ with DAG(
     print_bash_task = BashOperator(
         task_id="print_bash", bash_command="echo 'Hello world! at {{ ds }}'"
     )
-
+    print("ahihi {{ ds }}")
     print_external_file = BashOperator(task_id = "external_file", bash_command="python3 /opt/airflow/dags/repo/test.py")
     print_bash_task >> print_python_task >> print_external_file
