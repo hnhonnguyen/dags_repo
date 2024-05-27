@@ -28,4 +28,4 @@ with DAG(
     )
 
     print_external_file = BashOperator(task_id = "external_file", bash_command="python3 test.py")
-    print_bash_task >> print_python_task
+    print_bash_task >> print_python_task >> print_external_file
