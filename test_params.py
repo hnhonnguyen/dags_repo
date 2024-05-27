@@ -17,8 +17,8 @@ with DAG(
     default_args=default_args,
 ) as dag:
 
-    def print_hello():
-        print("Hello world! {{ ds }}")
+    def print_hello(ds):
+        print(f"Hello world! {ds}")
 
     task = PythonOperator(task_id="print_hello", python_callable=print_hello)
 
