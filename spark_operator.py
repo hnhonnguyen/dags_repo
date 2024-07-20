@@ -16,7 +16,7 @@ dag = DAG(
     start_date=days_ago(1),
     catchup=False,
     schedule_interval=timedelta(days=1),
-    # template_searchpath='/opt/airflow/dags/repo/dags/spark8s/'
+    template_searchpath='/opt/airflow/dags/repo/dags/spark8s/'
 )
 
 spark_k8s_task = SparkKubernetesOperator(
