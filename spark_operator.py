@@ -4,6 +4,7 @@ from airflow import DAG
 from airflow.providers.cncf.kubernetes.operators.spark_kubernetes import SparkKubernetesOperator
 from airflow.utils.dates import days_ago
 from airflow.models import Variable
+from airflow.operators.bash import BashOperator
 
 default_args = {
     'owner': 'Howdy',
@@ -18,6 +19,12 @@ dag = DAG(
     schedule_interval=timedelta(days=1)
     )
 
+check_if_file_exist = BashOperator(
+    task_id='print_date',
+    bash_command='ls /opt/airflow/dags/repo/spark8s/spark-k8s.yaml',
+    dag=dag
+)
+
 spark_k8s_task = SparkKubernetesOperator(
     task_id='n-spark-on-k8s-airflow',
     trigger_rule="all_success",
@@ -30,4 +37,4 @@ spark_k8s_task = SparkKubernetesOperator(
     dag=dag
 )
 
-spark_k8s_task
+check_if_file_exist >> spark_k8s_task
