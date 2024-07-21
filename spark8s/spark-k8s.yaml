@@ -15,7 +15,7 @@ spec:
   volumes:
     - name: scripts
       hostPath:
-        path: /home/docker/dags_repo/pyspark/pyspark_scripts
+        path: ~/dags_repo/pyspark/pyspark_scripts
         type: Directory
   driver:
     cores: 1
