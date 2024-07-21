@@ -20,7 +20,7 @@ spec:
     serviceAccount: spark-operator
     configMaps:
       - name: scripts
-        mountPath: /mnt/spark/scripts
+        path: /mnt/spark/scripts
   executor:
     cores: 1
     instances: 4
@@ -29,7 +29,7 @@ spec:
       version: "3.5.0"
     configMaps:
       - name: scripts
-        mountPath: /mnt/spark/scripts
+        path: /mnt/spark/scripts
   volumes:
     - name: scripts
       configMap:
