@@ -8,7 +8,7 @@ spec:
   pythonVersion: "3"
   mode: cluster
   image: "apache/spark:3.5.0"
-  mainApplicationFile: local:///mnt/spark/work/basic_spark.py
+  mainApplicationFile: local:///mnt/spark/scripts/basic_spark.py
   sparkVersion: "3.5.0"
   restartPolicy:
     type: Never
