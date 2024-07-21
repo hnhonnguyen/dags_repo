@@ -14,9 +14,8 @@ spec:
     type: Never
   volumes:
     - name: scripts
-      hostPath:
-        path: /mnt/spark/work
-        type: Directory
+      configMap:
+        name: spark-scripts
   driver:
     cores: 1
     memory: "512m"
