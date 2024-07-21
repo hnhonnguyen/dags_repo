@@ -18,7 +18,7 @@ spec:
     labels:
       version: "3.5.0"
     serviceAccount: spark-operator
-    volumeMounts:
+    configMaps:
       - name: scripts
         mountPath: /mnt/spark/scripts
   executor:
@@ -27,7 +27,7 @@ spec:
     memory: "512m"
     labels:
       version: "3.5.0"
-    volumeMounts:
+    configMaps:
       - name: scripts
         mountPath: /mnt/spark/scripts
   volumes:
