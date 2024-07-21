@@ -8,14 +8,10 @@ spec:
   pythonVersion: "3"
   mode: cluster
   image: "apache/spark:3.5.0"
-  mainApplicationFile: local:///mnt/spark/work/basic_spark.py
+  mainApplicationFile: local:///mnt/spark/scripts/basic_spark.py
   sparkVersion: "3.5.0"
   restartPolicy:
     type: Never
-  volumes:
-    - name: scripts
-      configMap:
-        name: spark-scripts
   driver:
     cores: 1
     memory: "512m"
@@ -24,7 +20,7 @@ spec:
     serviceAccount: spark-operator
     volumeMounts:
       - name: scripts
-        mountPath: /mnt/spark/work
+        mountPath: /mnt/spark/scripts
   executor:
     cores: 1
     instances: 4
@@ -33,7 +29,11 @@ spec:
       version: "3.5.0"
     volumeMounts:
       - name: scripts
-        mountPath: /mnt/spark/work
+        mountPath: /mnt/spark/scripts
+  volumes:
+    - name: scripts
+      configMap:
+        name: spark-scripts
   dynamicAllocation:
     enabled: true
     initialExecutors: 2
