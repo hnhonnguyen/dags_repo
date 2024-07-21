@@ -8,22 +8,33 @@ spec:
   pythonVersion: "3"
   mode: cluster
   image: "apache/spark:3.5.0"
-  mainApplicationFile: local:///home/ec2-user/dags_repo/pyspark/pyspark_scripts/basic_spark.py
+  mainApplicationFile: local:///mnt/spark/work/basic_spark.py
   sparkVersion: "3.5.0"
   restartPolicy:
     type: Never
+  volumes:
+    - name: scripts
+      hostPath:
+        path: /home/ec2-user/dags_repo/pyspark/pyspark_scripts
+        type: Directory
   driver:
     cores: 1
     memory: "512m"
     labels:
       version: "3.5.0"
     serviceAccount: spark-operator
+    volumeMounts:
+      - name: scripts
+        mountPath: /mnt/spark/work
   executor:
     cores: 1
     instances: 4
     memory: "512m"
     labels:
       version: "3.5.0"
+    volumeMounts:
+      - name: scripts
+        mountPath: /mnt/spark/work
   dynamicAllocation:
     enabled: true
     initialExecutors: 2
