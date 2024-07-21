@@ -8,14 +8,14 @@ spec:
   pythonVersion: "3"
   mode: cluster
   image: "apache/spark:3.5.0"
-  mainApplicationFile: local:///home/ec2-user/dags_repo/pyspark/pyspark_scripts/basic_spark.py
+  mainApplicationFile: local:///mnt/spark/work/basic_spark.py
   sparkVersion: "3.5.0"
   restartPolicy:
     type: Never
   volumes:
     - name: scripts
       hostPath:
-        path: /home/ec2-user/dags_repo/pyspark/pyspark_scripts
+        path: /mnt/spark/work
         type: Directory
   driver:
     cores: 1
