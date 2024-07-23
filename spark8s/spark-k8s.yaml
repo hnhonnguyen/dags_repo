@@ -14,9 +14,8 @@ spec:
     type: Never
   volumes:
     - name: scripts
-      hostPath:
-        path: ~/dags_repo/pyspark/pyspark_scripts
-        type: Directory
+      configMap:
+        name: spark-scripts
   driver:
     cores: 1
     memory: "512m"
