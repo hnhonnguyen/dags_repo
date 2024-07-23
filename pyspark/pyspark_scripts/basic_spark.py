@@ -13,7 +13,7 @@ spark = (SparkSession.builder
 .getOrCreate()
 )
 
-output = spark.select('''select 1''').collect()
+output = spark.sql('''select 1''').collect()
 
 print(output)
 
