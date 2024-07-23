@@ -34,7 +34,7 @@ spark_k8s_task = SparkKubernetesOperator(
     application_file='spark-k8s.yaml',
     namespace="spark-operator",
     kubernetes_conn_id="kubernetes_default",
-    do_xcom_push=True,
+    do_xcom_push=False,
     dag=dag
 )
 
